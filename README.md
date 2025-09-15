@@ -114,34 +114,6 @@ Type 'capture' to take a screenshot, 'exit' to stop.
 
 ---
 
-## 📂 Project Structure
-
-```
-spydrop/
-│── client.py
-│── server.py
-│── requirements.txt
-│── screenshots/  # (created when you run capture)
-│── venv/         # (virtual environment - not to be pushed)
-```
-
----
-
-## 📝 Notes
-
-- Do **not** commit the `venv/` folder.  
-- Add a `.gitignore` file to exclude unnecessary files:
-  ```
-  venv/
-  __pycache__/
-  *.pyc
-  screenshots/    # optional: add if you don't want screenshots in repo
-  .DS_Store
-  ```
-- This project is intended **solely for ethical learning and research** in cybersecurity.  
-
----
-
 ## ⚠️ Disclaimer
 This project is built for **educational and ethical cybersecurity training purposes only**.  
 The author does **not endorse or support any malicious use** of the provided code.
