@@ -1,6 +1,6 @@
 # SPYDROP — Ethical Cybersecurity Simulation via Game-Based Backdoor Deployment
 
-## 📌 Overview
+##  Overview
 SPYDROP is a cybersecurity simulation project designed to demonstrate **client-server interactions** and **backdoor deployment mechanics** in a controlled, ethical environment.  
 The repository contains the following core files:
 
@@ -12,7 +12,7 @@ A local virtual environment (`venv/`) can be created for dependency management (
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 Follow these steps to set up SPYDROP on your system:
 
@@ -48,7 +48,7 @@ Follow these steps to set up SPYDROP on your system:
 
 ---
 
-## ▶️ Usage
+##  Usage
 
 1. **Start the server** (in one terminal)
    ```bash
@@ -60,11 +60,11 @@ Follow these steps to set up SPYDROP on your system:
    python3 client.py
    ```
 
-✅ Once both scripts are running, the client will attempt to establish communication with the server.
+ Once both scripts are running, the client will attempt to establish communication with the server.
 
 ---
 
-## 🎮 Play the game — Capture Example
+##  Play the game — Capture Example
 
 This project includes an interactive command you can type in the **server** terminal to trigger a webcam capture and save a screenshot.
 
@@ -114,6 +114,6 @@ Type 'capture' to take a screenshot, 'exit' to stop.
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 This project is built for **educational and ethical cybersecurity training purposes only**.  
 The author does **not endorse or support any malicious use** of the provided code.
