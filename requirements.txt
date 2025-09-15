@@ -1,0 +1,10 @@
+# Core (cv2 needs numpy)
+numpy
+opencv-python
+
+# GUI / screen capture / automation
+pyautogui
+Pillow
+
+# Game/audio
+pygame
