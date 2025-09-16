@@ -92,4 +92,4 @@ This project includes an interactive command you can type in the **server** term
 
 ##  Disclaimer
 This project is built for **educational and ethical cybersecurity training purposes only**.  
-The author does **not endorse or support any malicious use** of the provided code.
+The authors does **not endorse or support any malicious use** of the provided code.
