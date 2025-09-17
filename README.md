@@ -1,95 +1,167 @@
-# SPYDROP — Ethical Cybersecurity Simulation via Game-Based Backdoor Deployment
+# SPYDROP
 
-##  Overview
-SPYDROP is a cybersecurity simulation project designed to demonstrate **client-server interactions** and **backdoor deployment mechanics** in a controlled, ethical environment.  
-The repository contains the following core files:
+**Ethical Cybersecurity Simulation via Game-Based Backdoor Deployment**
 
-- `client.py` — Client script  
-- `server.py` — Server script  
-- `requirements.txt` — Python dependencies  
-
-A local virtual environment (`venv/`) can be created for dependency management (⚠️ should not be pushed to GitHub).
+> SPYDROP is an educational cybersecurity simulation demonstrating client–server interactions and (controlled) backdoor mechanics in a safe, local environment. This repository is for learning and defensive training only — **not** for malicious use.
 
 ---
 
-##  Installation
+## Table of contents
 
-Follow these steps to set up SPYDROP on your system:
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/cruiex/spydrop.git
-   cd spydrop
-   ```
-
-2. **Create a virtual environment**
-   ```bash
-   python3 -m venv venv
-   ```
-
-3. **Activate the virtual environment**
-   - On **Linux/macOS**:
-     ```bash
-     source venv/bin/activate
-     ```
-   - On **Windows (PowerShell)**:
-     ```powershell
-     .\venv\Scripts\activate
-     ```
-
-4. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-   > **Tip:** If the project uses webcam capture, ensure `opencv-python` is listed in `requirements.txt`. If not, install it:
-   ```bash
-   pip install opencv-python
-   ```
+* [Overview](#overview)
+* [Warning & Ethics](#warning--ethics)
+* [Files](#files)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Play the game — Capture Example](#play-the-game---capture-example)
+* [Development notes](#development-notes)
+* [Security & responsible disclosure](#security--responsible-disclosure)
+* [Contributors](#contributors)
+* [License](#license)
 
 ---
 
-##  Usage
+## Overview
 
-1. **Start the server** (in one terminal)
-   ```bash
-   python3 server.py
-   ```
+SPYDROP is a local simulation that demonstrates how a client and server can communicate, and includes a (simulated) backdoor mechanism for educational demonstrations. The code intentionally runs locally and writes captured images to a `screenshots/` folder.
 
-2. **Run the client** (in another terminal)
-   ```bash
-   python3 client.py
-   ```
-
- Once both scripts are running, the client will attempt to establish communication with the server.
+**Intended audience:** cybersecurity students, educators, and lab demonstrators.
 
 ---
 
-##  Play the game — Capture Example
+## Warning & Ethics
 
-This project includes an interactive command you can type in the **server** terminal to trigger a webcam capture and save a screenshot.
+This repository is intended **strictly** for learning and defensive purposes. Do **not** deploy these tools on machines you do not own or control. Unauthorized access, deploying backdoors, or capturing data without explicit informed consent is illegal and unethical.
 
-**Steps**
-
-1. Start the server:
-   ```bash
-   python3 server.py
-   ```
-
-2. With the server running, type the command:
-   ```
-   capture
-   ```
-   (and press Enter)
-
-3. What happens:
-   - The server will access your default webcam (make sure your OS allows camera access).
-   - A single photo will be taken and saved into the project folder under `screenshots/` (created automatically if missing).
-   - The saved file name will include a timestamp, for example: `screenshots/screenshot_2025-09-15_22-15-30.jpg`.
-
-
+By using this code you agree to only run it in controlled, consented environments (your local machine, virtual machines you own, or lab setups where participants have agreed).
 
 ---
 
-##  Disclaimer
-This project is built for **educational and ethical cybersecurity training purposes only**.  
-The authors does **not endorse or support any malicious use** of the provided code.
+## Files
+
+* `server.py` — server-side script (listens for client connections and contains interactive commands).
+* `client.py` — client-side script (connects to server and responds to commands).
+* `requirements.txt` — Python dependencies.
+* `screenshots/` — directory where captured images are stored (created at runtime).
+
+---
+
+## Requirements
+
+* Python 3.8+
+* Recommended to run inside a virtual environment.
+
+If webcam capture is required, `opencv-python` should be present in `requirements.txt`.
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/cruiex/spydrop.git
+cd spydrop
+
+# create virtual env
+python3 -m venv venv
+
+# activate (Linux/macOS)
+source venv/bin/activate
+
+# Windows (PowerShell)
+# .\venv\Scripts\Activate.ps1
+
+# install dependencies
+pip install -r requirements.txt
+```
+
+If your `requirements.txt` does not include `opencv-python` and you plan to use the webcam feature:
+
+```bash
+pip install opencv-python
+```
+
+---
+
+## Usage
+
+1. Start the server (one terminal):
+
+```bash
+python3 server.py
+```
+
+2. Start the client (other terminal):
+
+```bash
+python3 client.py
+```
+
+The client will attempt to connect to the server. With both running, you can use server-side commands to interact with the client.
+
+---
+
+## Play the game — Capture Example
+
+1. Run the server: `python3 server.py`
+2. In the server terminal type:
+
+```
+capture
+```
+
+3. The server will attempt to access the default webcam (OS permission prompts may appear). A single photo will be saved into `screenshots/` (created automatically) with a timestamped filename, for example:
+
+```
+screenshots/screenshot_2025-09-15_22-15-30.jpg
+```
+
+---
+
+## Development notes & suggestions
+
+* Add a `.gitignore` to avoid committing the virtual environment and sensitive files:
+
+```
+venv/
+__pycache__/
+screenshots/
+*.pyc
+.env
+```
+
+* Consider parameterizing server host/port via CLI args or a small `config.json` so accidental exposure is minimized.
+* Keep `screenshots/` out of the repository (add to `.gitignore`) as it will store potentially sensitive images.
+* Add unit tests or simple integration tests for the client/server handshake.
+* Consider adding a `--dry-run` or `--no-webcam` flag for demoing the flow without camera hardware.
+
+---
+
+## Security & responsible disclosure
+
+* Do **not** run this code on public networks or machines you don't own.
+* If you find a security issue with this project, please open an issue or contact the maintainers privately (do **not** post proof-of-concept exploits publicly). Include reproduction steps and environment details.
+
+---
+
+## Contributors
+
+| Roll No. | Name           | Responsibility          |
+| -------- | -------------- | ----------------------- |
+| 22BCS059 | Laxmi          | PYTHON GAME             |
+| 22BCS100 | Rohit          | BACKDOOR IMPLEMENTATION |
+| 22BCS105 | Saahil Mishra  | SERVER SIDE             |
+| 22BCS121 | Shriya Udupa K | CLIENT SIDE             |
+
+---
+
+## License
+
+Add a license to clarify permissions. Example: MIT License.
+
+---
+
+## Contact / Acknowledgements
+
+For questions or educational use requests, open an issue or reach out to the repository owner. Thank you for using SPYDROP responsibly.
+
